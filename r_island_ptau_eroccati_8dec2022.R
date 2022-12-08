@@ -152,4 +152,78 @@ summary(gp2)
 stargazer(gp1, gp2, title="Results Table: P-tau", align=TRUE, type= "html", out = "gcp.htm")
 
 
+#### figures ==================================================================
+###### DRP & P-TAU
+p1 <- island_df %>% filter(Alcohol_risk=="high" | Alcohol_risk=="medium" | Alcohol_risk=="low") %>% 
+  ggplot(aes(x= Alcohol_risk, y=ptau181_conc, group=Alcohol_risk, colour= Alcohol_risk))+
+  ggdist::stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  geom_boxplot(width = .2, outlier.shape = NA) + 
+  geom_jitter(width = .05, alpha = .2) +scale_x_discrete(limits = c("low", "medium", "high"))+
+  theme(legend.position="none", axis.title.y=element_blank())+labs(x = "Alcohol")
+p2 <- island_df %>% filter(BloodPressure_risk=="high" | BloodPressure_risk=="medium" | BloodPressure_risk=="low") %>% 
+  ggplot(aes(x= BloodPressure_risk, y=ptau181_conc, group=BloodPressure_risk, colour= BloodPressure_risk))+
+  ggdist::stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  geom_boxplot(width = .2, outlier.shape = NA) + 
+  geom_jitter(width = .05, alpha = .2) +scale_x_discrete(limits = c("low", "medium", "high"))+
+  theme(legend.position="none", axis.title.y=element_blank())+labs(x = "Blood Pressure")
+p3 <- island_df %>% filter(BMI_risk=="high" | BMI_risk=="medium" | BMI_risk=="low") %>% 
+  ggplot(aes(x= BMI_risk, y=ptau181_conc, group=BMI_risk, colour= BMI_risk))+
+  ggdist::stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  geom_boxplot(width = .2, outlier.shape = NA) + 
+  geom_jitter(width = .05, alpha = .2) +scale_x_discrete(limits = c("low", "medium", "high"))+
+  theme(legend.position="none", axis.title.y=element_blank())+labs(x = "BMI")
+p4 <- island_df %>% filter(Cholesterol_risk=="high" | Cholesterol_risk=="medium" | Cholesterol_risk=="low") %>% 
+  ggplot(aes(x= Cholesterol_risk, y=ptau181_conc, group=Cholesterol_risk, colour= Cholesterol_risk))+
+  ggdist::stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  geom_boxplot(width = .2, outlier.shape = NA) + 
+  geom_jitter(width = .05, alpha = .2) +scale_x_discrete(limits = c("low", "medium", "high"))+
+  theme(legend.position="none", axis.title.y=element_blank())+labs(x = "Cholesterol")
+p5 <- island_df %>% filter(CognitiveActivity_risk=="high" | CognitiveActivity_risk=="medium" | CognitiveActivity_risk=="low") %>% 
+  ggplot(aes(x= CognitiveActivity_risk, y=ptau181_conc, group=CognitiveActivity_risk, colour= CognitiveActivity_risk))+
+  ggdist::stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  geom_boxplot(width = .2, outlier.shape = NA) + 
+  geom_jitter(width = .05, alpha = .2) +scale_x_discrete(limits = c("low", "high"))+
+  theme(legend.position="none", axis.title.y=element_blank())+labs(x = "Cognitive Activity")
+p6 <- island_df %>% filter(Diabetes_risk=="high" | Diabetes_risk=="medium" | Diabetes_risk=="low") %>% 
+  ggplot(aes(x= Diabetes_risk, y=ptau181_conc, group=Diabetes_risk, colour= Diabetes_risk))+
+  ggdist::stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  geom_boxplot(width = .2, outlier.shape = NA) + 
+  geom_jitter(width = .05, alpha = .2) +scale_x_discrete(limits = c("low", "medium", "high"))+
+  theme(legend.position="none", axis.title.y=element_blank())+labs(x = "Diabetes")
+p7 <- island_df %>% filter(Diet_risk=="high" | Diet_risk=="medium" | Diet_risk=="low") %>% 
+  ggplot(aes(x= Diet_risk, y=ptau181_conc, group=Diet_risk, colour= Diet_risk)) +
+  ggdist::stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  geom_boxplot(width = .2, outlier.shape = NA) + 
+  geom_jitter(width = .05, alpha = .2) +scale_x_discrete(limits = c("low","medium", "high"))+
+  theme(legend.position="none", axis.title.y=element_blank())+labs(x = "Diet")
+p8 <- island_df %>% filter(PhysicalActivity_risk=="high" | PhysicalActivity_risk=="medium" | PhysicalActivity_risk=="low") %>% 
+  ggplot(aes(x= PhysicalActivity_risk, y=ptau181_conc, group=PhysicalActivity_risk, colour= PhysicalActivity_risk))+
+  ggdist::stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  geom_boxplot(width = .2, outlier.shape = NA) + 
+  geom_jitter(width = .05, alpha = .2) +scale_x_discrete(limits = c("low", "high"))+
+  theme(legend.position="none", axis.title.y=element_blank())+labs(x = "Physical Activity")
+p9 <- island_df %>% filter(Smoking_risk=="high" | Smoking_risk=="medium" | Smoking_risk=="low") %>% 
+  ggplot(aes(x= Smoking_risk, y=ptau181_conc, group=Smoking_risk, colour= Smoking_risk))+
+  ggdist::stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  geom_boxplot(width = .2, outlier.shape = NA) + 
+  geom_jitter(width = .05, alpha = .2) +scale_x_discrete(limits = c("low", "medium", "high"))+
+  theme(legend.position="none", axis.title.y=element_blank())+labs(x = "Smoking")
+
+
+p_all <- ggarrange(p1, p2, p3, p4, p5, p6, p7, p8, p9,
+                   ncol = 3, nrow = 3)
+require(grid)
+annotate_figure(p_all, left = textGrob("Phosphorylatd plasma p-tau 181 (pg/mL)", rot = 90, vjust = 0.5, gp = gpar(cex = 1.3)))
+
+p_all
+
+###### FOREST PLOT LM
+fit1 <- lm(ptau181_conc ~ Alcohol_score + BloodPressure_score + BMI_score + Cholesterol_score + CognitiveActivity_score + Diabetes_score + Diet_score + PhysicalActivity_score + Smoking_score , data = island_df)
+fit2 <- update(fit1, . ~ . + age_at_bkgd + gender + total_school_years + e4)
+
+forest <- plot_models(fit1, fit2, std.est = "std2", axis.labels = c("APOE: e4", "Education", "Gender: Male", "Age", "Smoking", "Physical Activity", "Diet", "Diabetes", "Cognitive Activity" , "Cholesterol", "BMI","Blood Pressure", "Alcohol"),
+                      m.labels = c("Unadjusted", "Adjusted"), colors = c("darkgreen", "darkorange"),
+                      legend.title = "Models") + theme(legend.position="bottom") + ylim(-.5, .5)
+
+
 
